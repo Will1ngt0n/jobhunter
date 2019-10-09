@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title  style="text-align: center">
+      Available jobs
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngFor="let x of jobs">
+      <ion-card style = "padding: 5px; color:#000" >
+        <div style="text-align: center;">
+            <img *ngIf="x.company_logo" class="center" [src]="x.company_logo">
+        </div>
+        <h3 style="font-size: 16px; text-align: center; margin: 2px 2px;">
+          {{x.company}}
+        </h3>
+        <h6 style="font-size: 12px; text-align: center; margin: 2px 2px 0 2px;">
+          {{x.created_at}}
+        </h6>
+        <ion-item-divider style="margin: 0"></ion-item-divider>
+        <h2 style="font-size: 18px; margin: 2px 2px;">{{x.title}}</h2>
+        <h6  style="font-size: 12px;margin: 2px 2px;">{{x.location}}</h6>
+        <ion-item class="inset">
+            <div style="height: 100px; font-size: 12px;" [innerHTML]="x.description.substring(0,300)" ></div>
+        </ion-item>
+        <ion-item class="blur">
+          <a color="secondary" style="font-size: 12px" [routerLink]="['/job-description', x.id]">View More</a>
+        </ion-item>
+      </ion-card>
+  </ion-list>
+</ion-content>
